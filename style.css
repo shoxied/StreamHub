@@ -37,7 +37,7 @@ body{
     background-color: rgb(30,30,38);
     border-style: hidden;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: start;   
+    text-align: start;
 }
 
 .content {
@@ -46,20 +46,46 @@ body{
     margin-left: 160px; 
     background-color: rgb(255, 255, 255);
     display: flex;
+    flex-flow: column;
 }
 
 .content-title {
 margin-left: 300px;
 }
 
-.column {
-    font-size: 15px;
-    flex-grow: 1;
-    padding: 10px;
-    background-color: #f0f0f0;
-    text-align: center;
+.film-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
 
-.column  {
-    margin-right: 10px; 
+.grid-item{
+    display: flex;
+    flex-flow: column;
+    width: 250px;
+
+}
+
+.popular-now{
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0 auto;
+}
+
+.info{
+    flex-flow: column;
+    display: flex;
+}
+
+.poster{
+    width:250px ;
+    margin-left: 10px;
+
+
+}
+
+.title-grid-item{
+    text-align: center;  
+    font-family:Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 20px;
+
 }
