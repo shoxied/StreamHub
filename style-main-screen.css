@@ -88,16 +88,8 @@ body{
     margin-bottom: 20px;
 }
 
-.info{
-    flex-flow: column;
-    display: flex;
-}
-
 .poster{
     width:250px ;
-    margin-left: 10px;
-
-
 }
 
 .title-grid-item{
@@ -109,8 +101,6 @@ body{
 
 .poster2{
     width:250px ;
-    margin-left: 20px;
-
 }
 
 .grid-item2{
@@ -123,15 +113,12 @@ body{
     text-align: center;  
     font-family:Verdana, Geneva, Tahoma, sans-serif; 
     font-size: 20px;
-    margin-left: 20px;
     border-style: hidden;
 
 }
 
 .poster3{
     width:250px ;
-    margin-left: 20px;
-
 }
 
 .grid-item3{
@@ -144,8 +131,6 @@ body{
     text-align: center;  
     font-family:Verdana, Geneva, Tahoma, sans-serif; 
     font-size: 20px;
-    margin-left: 20px;
     border-style: hidden;
     font-style: strong;
-
 }
