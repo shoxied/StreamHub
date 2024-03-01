@@ -63,7 +63,6 @@ body{
     margin-left: 200px;
     display: flex;
     height: auto;
-    width: 100%;
 }
 
 .film-poster{
@@ -77,5 +76,5 @@ body{
 }
 
 .title-text{
-    text-align: right;
+    text-align: left;
 }

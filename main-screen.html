@@ -4,25 +4,28 @@
     <link rel="stylesheet" href="style-main-screen.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    <script src="knockout.js"></script>
     <title>StreamHub</title>
 </head>
 
 <body>
 
-    <div class="header">
+    <div class="header" onclick="location.href='main-screen.html'">
         <img class="header-img" src="images/img-logo.png">
-        <button class="header-text">StreamHub</button>
+        <strong class="header-text">StreamHub</strong>
     </div>
 
     <div class="sidebar">
-        <div class="sidebar-item-home">
+        <div class="sidebar-item-home" onclick="location.href='main-screen.html'">
             <img src="images/icon-home.png" class="sidebar-icon-home"> 
-            <button class="sidebar-text">Главная </button>
+            <strong class="sidebar-text">Главная</strong>
         </div>
 
-        <div class="sidebar-item-favorite">
+        <div class="sidebar-item-favorite" onclick="location.href='favorite-screen.html'">
             <img src="images/icon-favorite.png" class="sidebar-icon-favorite">
-            <button class="sidebar-text">Избранное </button>
+            <strong class="sidebar-text">Избранное</strong>
         </div>
     </div>
     
@@ -31,20 +34,18 @@
         <div class="film-grid">
             <div class="grid-item">
                 <img class="poster" src="images\orig.webp" id="poster-grid-item">
-    
-                <button class="title-grid-item">Марсианин</strong>
+                <strong class="title-grid-item">Марсианин</strong>
             </div>
-            <div class="grid-item2">
+            <div class="grid-item">
                 <img class="poster2" src="images/i.webp" id="poster-grid-item2">
-                <button class="title-grid-item2">Аватар</strong>
+                <strong class="title-grid-item2">Аватар</strong>
             </div>
-            <div class="grid-item3">
+            <div class="grid-item">
                 <img class="poster3" src="images/zombie-img.jpg" id="poster-grid-item3">
-                <button class="title-grid-item3">Добро пожаловать в Зомбилэнд</strong>
+                <strong class="title-grid-item3">Добро пожаловать в Зомбилэнд</strong>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

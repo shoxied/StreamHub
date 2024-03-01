@@ -4,24 +4,27 @@
     <link rel="stylesheet" href="style-favorite-screen.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    <script src="knockout.js"></script>
     <title>Избранное</title>
 </head>
 
 <body>
-    <div class="header">
+    <div class="header" onclick="location.href='main-screen.html'">
         <img class="header-img" src="images/img-logo.png">
-        <button class="header-text">StreamHub</button>
+        <strong class="header-text">StreamHub</strong>
     </div>
 
     <div class="sidebar">
-        <div class="sidebar-item-home">
+        <div class="sidebar-item-home" onclick="location.href='main-screen.html'">
             <img src="images/icon-home.png" class="sidebar-icon-home"> 
-            <button class="sidebar-text">Главная </button>
+            <strong class="sidebar-text">Главная </strong>
         </div>
 
-        <div class="sidebar-item-favorite">
+        <div class="sidebar-item-favorite" onclick="location.href='favorite-screen.html'">
             <img src="images/icon-favorite.png" class="sidebar-icon-favorite">
-            <button class="sidebar-text">Избранное </button>
+            <strong class="sidebar-text">Избранное </strong>
         </div>
     </div>
     
