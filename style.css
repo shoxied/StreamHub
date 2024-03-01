@@ -17,7 +17,7 @@
 
 .sidebar{
     height: 100vh;
-    width: 160px;
+    width: 200px;
     background-color: rgb(30,30,38);
     display: flex;
     flex-flow: column;
@@ -31,26 +31,41 @@ body{
 
 .sidebar-text{
     color: rgb(255, 255, 255);
-    font-size: 20px;
-    line-height: 35px; 
-    margin-left: 15px;
+    font-size: 25px;
+    line-height: 40px; 
     background-color: rgb(30,30,38);
     border-style: hidden;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: start;
+    text-align: center start;
+}
+
+.sidebar-icon-home{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.sidebar-item-home{
+    display: flex;
+}
+
+.sidebar-item-favorite{
+    display: flex;
+}
+
+.sidebar-icon-favorite{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
 }
 
 .content {
     height: auto;
     width: 100%;
-    margin-left: 160px; 
+    margin-left: 200px; 
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-flow: column;
-}
-
-.content-title {
-margin-left: 300px;
 }
 
 .film-grid {
@@ -69,6 +84,8 @@ margin-left: 300px;
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .info{
@@ -88,8 +105,6 @@ margin-left: 300px;
     font-family:Verdana, Geneva, Tahoma, sans-serif; 
     font-size: 20px;
     border-style: hidden;
-    
-
 }
 
 .poster2{
