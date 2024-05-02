@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style-detail-screen.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детальная информация о фильме</title>
+    <link rel="stylesheet" href="style-detail-screen.css">
     <script src="jquery.js"></script>
     <script src="script.js"></script>
-    <script src="knockout.js"></script>
-    <title>Какой-то фильм</title>
+    
 </head>
-
 <body>
     <div class="header">
         <img class="header-img" src="images/img-logo.png">
         <button class="header-text">StreamHub</button>
     </div>
 
-    
     <div class="sidebar">
         <div class="sidebar-item-home">
             <img src="images/icon-home.png" class="sidebar-icon-home"> 
-            <button class="sidebar-text">Главная </button>
+            <button class="sidebar-text">Главная</button>
         </div>
 
         <div class="sidebar-item-favorite">
             <img src="images/icon-favorite.png" class="sidebar-icon-favorite">
-            <button class="sidebar-text">Избранное </button>
+            <button class="sidebar-text">Избранное</button>
         </div>
     </div>
 
     <div class="content">
-        <img src="images/orig.webp" class="film-poster" id="film-poster">
-        <div class="detail-info-text">
-            <strong class="title-text">sdfsdf</strong>
+        <div class="movie-info">
+            <h1 id="title">Название фильма</h1>
+            <div class="buttons">
+                <button id="add-to-favorites">Добавить в избранное</button>
+                <button id="remove-from-favorites">Удалить из избранного</button>
+            </div>
         </div>
+        <img src=" " id="poster_path" alt="Постер фильма">
+        <p><strong>Бюджет:</strong> <span id="budget">Бюджет</span></p>
+        <p><strong>Оригинальное название:</strong> <span id="original_title">Оригинальное название</span></p>
+        <p><strong>Компании производители:</strong> <span id="production_companies">Компании производители</span></p>
+        <p><strong>Оценка:</strong> <span id="vote_average">Оценка</span></p>
+        <p><strong>Страна выпуска:</strong> <span id="production_countries">Страна выпуска</span></p>
+        <p><strong>Описание:</strong> <span id="overview">Краткое описание</span></p>
+        <p><strong>Жанры:</strong> <span id="genres">Жанры</span></p>
+        <p><strong>Дата выпуска:</strong> <span id="release_date">Дата выпуска</span></p>
+        <p><strong>Длительность:</strong> <span id="runtime">Длительность</span></p>
+        <p><strong>Статус:</strong> <span id="status">Статус</span></p>
+        <p><strong>Количество голосов:</strong> <span id="vote_count">Количество голосов</span></p>
     </div>
+    
 </body>
+</html>

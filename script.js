@@ -1,23 +1,18 @@
 $(document).ready(function() {
-    const movieIds = [1105407]; 
-
-    function getMoviesInfo(movieIds) {
-        $.ajax({
-            url: 'http://localhost:9090/api/dada/films',
-            type: 'GET',
-            contentType: 'application/json',
-            data: JSON.stringify({ movieIds: movieIds }),
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
-
-    getMoviesInfo(movieIds);
+    $.ajax({
+        url: 'http://localhost:8080/api/dada/films',
+        type: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+        }
+    });
 });
+
+
 
 $(document).ready(function() {
 
@@ -43,7 +38,7 @@ $(document).ready(function() {
         $.ajax({
             url: `ссылка_на_сервер/избранное/удалить`,
             type: 'DELETE',
-            data: { movieId: movieId },
+            data: { id: id },
             success: function(response) {
                 alert('Фильм удален из избранного!');
             },
