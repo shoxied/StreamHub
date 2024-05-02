@@ -3,8 +3,8 @@ $(document).ready(function() {
 
     function getMoviesInfo(movieIds) {
         $.ajax({
-            url: 'http://localhost:8080/api/dada/films',
-            type: 'POST',
+            url: 'http://localhost:9090/api/dada/films',
+            type: 'GET',
             contentType: 'application/json',
             data: JSON.stringify({ movieIds: movieIds }),
             success: function(response) {
