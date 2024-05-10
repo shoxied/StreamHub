@@ -5,35 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="jquery.js"></script>
-    <script src="script.js"></script>
     <script src="knockout.js"></script>
+    <script src="script.js"></script>
     <title>StreamHub</title>
 </head>
 
 <body>
+    <div class="header">
+        <img class="header-img" src="images/img-logo.png" onclick="location.href='main-screen.html'">
+        <strong class="header-text" onclick="location.href='main-screen.html'">StreamHub</strong>
 
-    <div class="header" onclick="location.href='main-screen.html'">
-        <img class="header-img" src="images/img-logo.png">
-        <strong class="header-text">StreamHub</strong>
+        <input name="search" type="search" class="header-search" />
     </div>
 
-    <div class="sidebar">
-        <div class="sidebar-item-home" onclick="location.href='main-screen.html'">
-            <img src="images/icon-home.png" class="sidebar-icon-home"> 
-            <strong class="sidebar-text">Главная</strong>
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="sidebar-item" onclick="location.href='main-screen.html'">
+                <img src="images/icon-home.png" class="sidebar-icon"> 
+                <span class="sidebar-text">Главная</span>
+            </div>
+            <div class="sidebar-item" onclick="location.href='favorite-screen.html'">
+                <img src="images/icon-favorite.png" class="sidebar-icon">
+                <span class="sidebar-text">Избранное</span>
+            </div>
         </div>
-
-        <div class="sidebar-item-favorite" onclick="location.href='favorite-screen.html'">
-            <img src="images/icon-favorite.png" class="sidebar-icon-favorite">
-            <strong class="sidebar-text">Избранное</strong>
+        
+        <div class="content">
+            <strong class="popular-now">Популярно сейчас</strong>
+            <div class="film-grid">
+                <div onclick="location.href='page.html'">
+                    <img class="poster" src="images\orig.webp" id="poster-grid-item">
+                    <strong class="title-grid-item">Марсианин</strong>
+                </div>
+                <div>
+                    <img class="poster" src="images/i.webp" id="poster-grid-item">
+                    <strong class="title-grid-item">Аватар</strong>
+                </div>
+                <div>
+                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
+                </div>
+                <div>
+                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
+                </div>
+                <div>
+                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
+                </div>
+                <div>
+                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
+                </div>
+                <div>
+                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
+                </div>
+                <div>
+                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
+                </div>
+            </div>
         </div>
+        <!-- <div class="content">
+            <strong class="popular-now">Популярно сейчас</strong>
+            <div class="film-grid" data-bind="foreach: data.films">
+                <div>
+                    <img class="poster" id="poster-grid-item" data-bind="attr: { src: $data.image }">
+                    <strong class="title-grid-item" data-bind="text: $data.name"></strong>
+                </div>
+            </div>
+        </div> -->
     </div>
-    
-    <div class="content">
-        <strong class="popular-now">Популярно сейчас</strong>
-    </div>
-</div>
-
 </body>
+<!-- 
+    <script>
+        self.data = ko.observable()
+
+        $.ajax({
+            url: "",
+            type: 'get',
+            data: ''
+        }).done(response => {
+            self.data(response)
+        })
+    </script> -->
 
 </html>
