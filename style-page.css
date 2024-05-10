@@ -1,0 +1,49 @@
+.page-content {
+    padding: 35px;
+}
+
+.main-info {
+    display: flex;
+}
+
+.page-poster > img {
+    max-width: 350px;
+    max-height: 550px;
+    border-radius: 5px;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.content-info {
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.info-name {
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.info-description {
+    margin-top: 40px;
+    gap: 5px;
+    display: flex;
+    flex-flow: column;
+    font-size: 20px;
+}
+
+.info-full-description {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.info-full-description > b {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.info-full-description > span {
+    margin-top: 10px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style-main-screen.css">
+    <link rel="stylesheet" href="style-page.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
+    <script src="knockout.js"></script>
+    <script src="script.js"></script>
+    <title>StreamHub</title>
+</head>
+
+<body>
+    <div class="header">
+        <img class="header-img" src="images/img-logo.png" onclick="location.href='main-screen.html'">
+        <strong class="header-text" onclick="location.href='main-screen.html'">StreamHub</strong>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="sidebar-item" onclick="location.href='main-screen.html'">
+                <img src="images/icon-home.png" class="sidebar-icon"> 
+                <span class="sidebar-text">Главная</span>
+            </div>
+            <div class="sidebar-item" onclick="location.href='favorite-screen.html'">
+                <img src="images/icon-favorite.png" class="sidebar-icon">
+                <span class="sidebar-text">Избранное</span>
+            </div>
+        </div>
+
+        <div class="page-content">
+            <div class="main-info">
+                <div class="content">
+                    <div class="page-poster">
+                        <img src="images\orig.webp" />
+                    </div>
+                </div>
+                <div class="content-info">
+                    <div class="info-name">
+                        Марсианин
+                    </div>
+                    <div class="info-description">
+                        <span>Страна: Америка</span>
+                        <span>Год: 2020</span>
+                        <span>Режиссер: Ага</span>
+                    </div>
+                </div>
+            </div>
+            <div class="info-full-description">
+                <b>Описание</b>
+                <br>
+                <span>Тут какое-то описание</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
