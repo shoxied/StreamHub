@@ -6,7 +6,7 @@ self.project = {
 }
 
 $.ajax({
-    url: '',
+    url: '217.71.129.139:4529',
     type: 'get',
     dataType: 'json'
 }).done(response => {

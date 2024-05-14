@@ -1,2 +1,0 @@
-GET http://localhost:9090/api/dada/films
-Content-Type: application/json

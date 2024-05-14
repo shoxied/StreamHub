@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Детальная информация о фильме</title>
-    <link rel="stylesheet" href="style-detail-screen.css">
-    <script src="jquery.js"></script>
-    <script src="script.js"></script>
-    
+    <link rel="stylesheet" href="css/style-detail-screen.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
     <div class="header">
-        <img class="header-img" src="images/img-logo.png">
-        <button class="header-text">StreamHub</button>
+        <img class="header-img" src="img/img-logo.png" onclick="location.href='main-screen.html'">
+        <button class="header-text" onclick="location.href='main-screen.html'">StreamHub</button>
     </div>
 
     <div class="sidebar">
-        <div class="sidebar-item-home">
-            <img src="images/icon-home.png" class="sidebar-icon-home"> 
+        <div class="sidebar-item-home" onclick="location.href='main-screen.html'">
+            <img src="img/icon-home.png" class="sidebar-icon-home"> 
             <button class="sidebar-text">Главная</button>
         </div>
 
-        <div class="sidebar-item-favorite">
-            <img src="images/icon-favorite.png" class="sidebar-icon-favorite">
+        <div class="sidebar-item-favorite" onclick="location.href='favorite-screen.html'">
+            <img src="img/icon-favorite.png" class="sidebar-icon-favorite">
             <button class="sidebar-text">Избранное</button>
         </div>
     </div>

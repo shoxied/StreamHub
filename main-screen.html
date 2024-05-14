@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style-main-screen.css">
+    <link rel="stylesheet" href="css/style-main-screen.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="jquery.js"></script>
-    <script src="knockout.js"></script>
-    <script src="script.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/knockout.js"></script>
+    <script src="js/script.js"></script>
     <title>StreamHub</title>
 </head>
 
 <body>
     <div class="header">
-        <img class="header-img" src="images/img-logo.png" onclick="location.href='main-screen.html'">
+        <img class="header-img" src="img/img-logo.png" onclick="location.href='main-screen.html'">
         <strong class="header-text" onclick="location.href='main-screen.html'">StreamHub</strong>
 
         <input name="search" type="search" class="header-search" />
@@ -21,11 +21,11 @@
     <div class="main-content">
         <div class="sidebar">
             <div class="sidebar-item" onclick="location.href='main-screen.html'">
-                <img src="images/icon-home.png" class="sidebar-icon"> 
+                <img src="img/icon-home.png" class="sidebar-icon"> 
                 <span class="sidebar-text">Главная</span>
             </div>
             <div class="sidebar-item" onclick="location.href='favorite-screen.html'">
-                <img src="images/icon-favorite.png" class="sidebar-icon">
+                <img src="img/icon-favorite.png" class="sidebar-icon">
                 <span class="sidebar-text">Избранное</span>
             </div>
         </div>
@@ -33,36 +33,36 @@
         <div class="content">
             <strong class="popular-now">Популярно сейчас</strong>
             <div class="film-grid">
-                <div onclick="location.href='page.html'">
-                    <img class="poster" src="images\orig.webp" id="poster-grid-item">
+                <div onclick="location.href='detail-screen.html'">
+                    <img class="poster" src="img/orig.webp" id="poster-grid-item">
                     <strong class="title-grid-item">Марсианин</strong>
                 </div>
                 <div>
-                    <img class="poster" src="images/i.webp" id="poster-grid-item">
+                    <img class="poster" src="img/i.webp" id="poster-grid-item">
                     <strong class="title-grid-item">Аватар</strong>
                 </div>
                 <div>
-                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
                     <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
                 </div>
                 <div>
-                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
                     <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
                 </div>
                 <div>
-                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
                     <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
                 </div>
                 <div>
-                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
                     <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
                 </div>
                 <div>
-                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
                     <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
                 </div>
                 <div>
-                    <img class="poster" src="images/zombie-img.jpg" id="poster-grid-item">
+                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
                     <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
                 </div>
             </div>
@@ -78,17 +78,4 @@
         </div> -->
     </div>
 </body>
-<!-- 
-    <script>
-        self.data = ko.observable()
-
-        $.ajax({
-            url: "",
-            type: 'get',
-            data: ''
-        }).done(response => {
-            self.data(response)
-        })
-    </script> -->
-
 </html>
