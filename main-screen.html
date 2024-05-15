@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/jquery.js"></script>
     <script src="js/knockout.js"></script>
-    <script src="js/script.js"></script>
     <title>StreamHub</title>
 </head>
 
@@ -30,7 +29,7 @@
             </div>
         </div>
         
-        <div class="content">
+        <!-- <div class="content">
             <strong class="popular-now">Популярно сейчас</strong>
             <div class="film-grid">
                 <div onclick="location.href='detail-screen.html'">
@@ -66,16 +65,39 @@
                     <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
                 </div>
             </div>
-        </div>
-        <!-- <div class="content">
-            <strong class="popular-now">Популярно сейчас</strong>
-            <div class="film-grid" data-bind="foreach: data.films">
-                <div>
-                    <img class="poster" id="poster-grid-item" data-bind="attr: { src: $data.image }">
-                    <strong class="title-grid-item" data-bind="text: $data.name"></strong>
-                </div>
-            </div>
         </div> -->
+        <div class="content">
+            <strong class="popular-now">Популярно сейчас</strong>
+            <div class="film-grid" data-bind="foreach: self.project.films">
+                <a data-bind="attr: { 'href': window.location.origin + '/detail-screen.html#' + $data.id }">
+                    <div class="poster" data-bind="style: { 'background-image': createImageUrl($data.poster) }"></div>
+                    <strong class="title-grid-item" data-bind="text: $data.title"></strong>
+                </a>
+            </div>
+        </div>
     </div>
+
+    <script>
+        var self = this;
+
+        var createImageUrl = function(data) {
+            return "url('data:image/png;base64," + data + "')";
+        }
+
+        self.project = {
+            films: ko.observableArray([]),
+        }
+
+        $.ajax({
+            url: 'http://217.71.129.139:4529/api/v1/films',
+            type: 'get',
+            dataType: 'json',
+            async: false
+        }).done(response => {
+            self.project.films(response);
+        })
+
+        ko.applyBindings();
+    </script>
 </body>
 </html>
