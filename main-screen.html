@@ -14,7 +14,37 @@
         <img class="header-img" src="img/img-logo.png" onclick="location.href='main-screen.html'">
         <strong class="header-text" onclick="location.href='main-screen.html'">StreamHub</strong>
 
-        <input name="search" type="search" class="header-search" />
+        <input class="header-search" id="input" placeholder="Введите название фильма"/>
+        <button class="search-button" src="img/search.png" onclick="request_with_name()">Поиск</button>
+        
+        <script>
+            function request_with_name(){
+                var a = $(".header-search")[0];
+                console.log(a.value);
+
+                var self = this;
+
+                var createImageUrl = function(data) {
+                    return "url('data:image/png;base64," + data + "')";
+                }
+
+                self.project = {
+                films: ko.observableArray([]),
+                }
+
+                $.ajax({
+                    url: 'http://217.71.129.139:4529/api/v1/films?name=' + name,
+                    type: 'get',
+                    dataType: 'json',
+                    async: false
+                }).done(response => {
+                    self.project.films(response);
+                })
+
+                ko.applyBindings();
+                a.value = "";
+            }
+        </script>
     </div>
 
     <div class="main-content">
@@ -28,44 +58,7 @@
                 <span class="sidebar-text">Избранное</span>
             </div>
         </div>
-        
-        <!-- <div class="content">
-            <strong class="popular-now">Популярно сейчас</strong>
-            <div class="film-grid">
-                <div onclick="location.href='detail-screen.html'">
-                    <img class="poster" src="img/orig.webp" id="poster-grid-item">
-                    <strong class="title-grid-item">Марсианин</strong>
-                </div>
-                <div>
-                    <img class="poster" src="img/i.webp" id="poster-grid-item">
-                    <strong class="title-grid-item">Аватар</strong>
-                </div>
-                <div>
-                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
-                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
-                </div>
-                <div>
-                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
-                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
-                </div>
-                <div>
-                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
-                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
-                </div>
-                <div>
-                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
-                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
-                </div>
-                <div>
-                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
-                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
-                </div>
-                <div>
-                    <img class="poster" src="img/zombie-img.jpg" id="poster-grid-item">
-                    <strong class="title-grid-item">Добро пожаловать в Зомбилэнд</strong>
-                </div>
-            </div>
-        </div> -->
+
         <div class="content">
             <strong class="popular-now">Популярно сейчас</strong>
             <div class="film-grid" data-bind="foreach: self.project.films">
@@ -79,7 +72,6 @@
 
     <script>
         var self = this;
-
         var createImageUrl = function(data) {
             return "url('data:image/png;base64," + data + "')";
         }
