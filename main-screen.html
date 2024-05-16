@@ -14,59 +14,57 @@
         <img class="header-img" src="img/img-logo.png" onclick="location.href='main-screen.html'">
         <strong class="header-text" onclick="location.href='main-screen.html'">StreamHub</strong>
 
-        <input class="header-search" id="input" placeholder="Введите название фильма"/>
+        <input class="header-search" id="input" placeholder="Введите название фильма" data-bind="value: project.searchText"/>
         <button class="search-button" src="img/search.png" onclick="request_with_name()">Поиск</button>
-        
-        <script>
-            function request_with_name(){
-                var a = $(".header-search")[0];
-                console.log(a.value);
-
-                var self = this;
-
-                var createImageUrl = function(data) {
-                    return "url('data:image/png;base64," + data + "')";
-                }
-
-                self.project = {
-                films: ko.observableArray([]),
-                }
-
-                $.ajax({
-                    url: 'http://217.71.129.139:4529/api/v1/films?name=' + name,
-                    type: 'get',
-                    dataType: 'json',
-                    async: false
-                }).done(response => {
-                    self.project.films(response);
-                })
-
-                ko.applyBindings();
-                a.value = "";
-            }
-        </script>
     </div>
 
     <div class="main-content">
         <div class="sidebar">
-            <div class="sidebar-item" onclick="location.href='main-screen.html'">
+            <div class="sidebar-item" data-bind="click: function() { requestCategory() }">
                 <img src="img/icon-home.png" class="sidebar-icon"> 
-                <span class="sidebar-text">Главная</span>
+                <span class="sidebar-text" data-bind="css: { 'selectedPage': project.selectedCategory() == undefined }">Главная</span>
             </div>
-            <div class="sidebar-item" onclick="location.href='favorite-screen.html'">
+            <div class="sidebar-item" data-bind="click: function() { requestCategory('favorite') }">
                 <img src="img/icon-favorite.png" class="sidebar-icon">
-                <span class="sidebar-text">Избранное</span>
+                <span class="sidebar-text" data-bind="css: { 'selectedPage': project.selectedCategory() == 'favorite' }">Избранное</span>
             </div>
         </div>
 
         <div class="content">
+            <!-- ko ifnot: self.project.selectedCategory() == 'favorite'-->
             <strong class="popular-now">Популярно сейчас</strong>
+            <!-- /ko -->
+            <!-- ko if: self.project.selectedCategory() == 'favorite'-->
+            <strong class="popular-now">Избранное</strong>
+            <!-- /ko -->
             <div class="film-grid" data-bind="foreach: self.project.films">
                 <a data-bind="attr: { 'href': window.location.origin + '/detail-screen.html#' + $data.id }">
                     <div class="poster" data-bind="style: { 'background-image': createImageUrl($data.poster) }"></div>
                     <strong class="title-grid-item" data-bind="text: $data.title"></strong>
                 </a>
             </div>
+
+            <!-- ko ifnot: self.project.selectedCategory() == 'favorite' -->
+            <div class="pages">
+                <button class="page-button" data-bind="
+                    click: function() { 
+                        self.project.selectedPage(self.project.selectedPage() == 1 ? 1 : self.project.selectedPage() - 1) 
+                    }
+                ">&lt;</button>
+                <div data-bind="foreach: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+                    <button class="page-button" data-bind="
+                        text: $data, 
+                        click: function() { project.selectedPage($data) },
+                        css: { 'selectedPage': project.selectedPage() == $data }
+                    "></button>
+                </div>
+                <button class="page-button" data-bind="
+                    click: function() { 
+                        self.project.selectedPage(self.project.selectedPage() == 15 ? 15 : self.project.selectedPage() + 1) 
+                    }
+                ">&gt;</button>
+            </div>
+            <!-- /ko -->
         </div>
     </div>
 
@@ -77,17 +75,65 @@
         }
 
         self.project = {
+            selectedCategory: ko.observable(undefined),
+            selectedPage: ko.observable(),
+            searchText: ko.observable(""),
             films: ko.observableArray([]),
         }
 
-        $.ajax({
-            url: 'http://217.71.129.139:4529/api/v1/films',
-            type: 'get',
-            dataType: 'json',
-            async: false
-        }).done(response => {
-            self.project.films(response);
+        function request_with_name() {
+            $.ajax({
+                url: 'http://217.71.129.139:4529/api/v1/films',
+                type: 'get',
+                dataType: 'json',
+                data: { 'name': self.project.searchText() }
+            }).done(response => {
+                self.project.films(response);
+            })
+        }
+
+        function requestCategory(category) {
+            self.project.selectedCategory(category);
+            location.hash = category ? category : '';
+            switch (category) {
+                case undefined:
+                    $.ajax({
+                        url: 'http://217.71.129.139:4529/api/v1/films',
+                        type: 'get',
+                        dataType: 'json'
+                    }).done(response => {
+                        self.project.films(response);
+                    })
+                    break;
+                case "favorite":
+                    $.ajax({
+                        url: 'http://217.71.129.139:4529/api/v1/favoriteFilms',
+                        type: 'get',
+                        dataType: 'json'
+                    }).done(response => {
+                        self.project.films(response);
+                    })
+                    break;
+            }
+        }
+
+        self.project.selectedPage.subscribe(page => {
+            if (self.project.selectedCategory() == 'favorite') return;
+            $.ajax({
+                url: 'http://217.71.129.139:4529/api/v1/films',
+                type: 'get',
+                dataType: 'json',
+                data: { 'page': page }
+            }).done(response => {
+                self.project.films(response);
+            })
         })
+
+        if (location.hash == "#favorite") {
+            requestCategory('favorite');
+        }
+
+        self.project.selectedPage(1);
 
         ko.applyBindings();
     </script>

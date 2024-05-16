@@ -142,3 +142,29 @@ body{
     margin-top: 30px;
     margin-right: 30px;
 }
+
+.pages {
+    margin: 20px auto;
+    padding-bottom: 30px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif; 
+    color: black;
+    display: flex;
+}
+
+.page-button {
+    font-size: 25px;
+    padding-right: 10px;
+    text-decoration: none;
+    transition: .2s ease;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+}
+
+.page-button:hover {
+    color: rgb(255, 161, 161);
+}
+
+.selectedPage {
+    color: rgb(255, 161, 161);
+}

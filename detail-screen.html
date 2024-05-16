@@ -14,41 +14,42 @@
         <button class="header-text" onclick="location.href='main-screen.html'">StreamHub</button>
     </div>
 
-    <div class="sidebar">
-        <div class="sidebar-item-home" onclick="location.href='main-screen.html'">
-            <img src="img/icon-home.png" class="sidebar-icon-home"> 
-            <button class="sidebar-text">Главная</button>
-        </div>
-
-        <div class="sidebar-item-favorite" onclick="location.href='favorite-screen.html'">
-            <img src="img/icon-favorite.png" class="sidebar-icon-favorite">
-            <button class="sidebar-text">Избранное</button>
-        </div>
-    </div>
-
-    <!-- ko using: project.film -->
-    <div class="content">
-        <div class="poster-block"><div class="poster" data-bind="style: { 'background-image': createImageUrl($data.poster) }" alt="img/loading.png"></div></div> 
-        <div class="info-block">
-            <h1 class="title" data-bind="text: title"></h1>
-            <p><strong>Бюджет:</strong> <span id="budget" data-bind="text: budget"></span></p>
-            <p><strong>Оригинальное название:</strong> <span id="original_title" data-bind="text: original_title"></span></p>
-            <p><strong>Компании производители:</strong> <span id="production_companies" data-bind="text: production_companies.join(', ')"></span></p>
-            <p><strong>Страны производители:</strong> <span id="production_countries" data-bind="text: production_countries.join(', ')"></span></p>
-            <p><strong>Описание:</strong> <span id="overview" data-bind="text: overview"></span></p>
-            <p><strong>Жанры:</strong> <span id="genres" data-bind="text: genres.join(', ')"></span></p>
-            <p><strong>Дата выпуска:</strong> <span id="release_date" data-bind="text: release_date"></span></p>
-            <p><strong>Длительность:</strong> <span id="runtime" data-bind="text: runtime"></span></p>
-            <p><strong>Статус:</strong> <span id="status" data-bind="text: status"></span></p>
-            <p><strong>Оценка:</strong> <span id="vote_average" data-bind="text: vote_average"></span></p>
-            <p><strong>Количество голосов:</strong> <span id="vote_count" data-bind="text: vote_count"></span></p>
-            <div class="buttons">
-                <button class="add">Добавить в избранное</button>
-                <button class="remove">Удалить из избранного</button>
+    <div style="display: flex;">
+        <div class="sidebar">
+            <div class="sidebar-item" onclick="location.href='main-screen.html'">
+                <img src="img/icon-home.png" class="sidebar-icon"> 
+                <span class="sidebar-text">Главная</span>
+            </div>
+            <div class="sidebar-item" onclick="location.href='main-screen.html#favorite'">
+                <img src="img/icon-favorite.png" class="sidebar-icon">
+                <span class="sidebar-text">Избранное</span>
             </div>
         </div>
+
+        <!-- ko using: project.film -->
+        <div class="content">
+            <div class="poster" data-bind="style: { 'background-image': createImageUrl($data.poster) }" alt="img/loading.png"></div>
+            <div class="info-block">
+                <h1 class="title" data-bind="text: title"></h1>
+                <p><strong>Бюджет:</strong> <span id="budget" data-bind="text: budget"></span></p>
+                <p><strong>Оригинальное название:</strong> <span id="original_title" data-bind="text: original_title"></span></p>
+                <p><strong>Компании производители:</strong> <span id="production_companies" data-bind="text: production_companies.join(', ')"></span></p>
+                <p><strong>Страны производители:</strong> <span id="production_countries" data-bind="text: production_countries.join(', ')"></span></p>
+                <p><strong>Описание:</strong> <span id="overview" data-bind="text: overview"></span></p>
+                <p><strong>Жанры:</strong> <span id="genres" data-bind="text: genres.join(', ')"></span></p>
+                <p><strong>Дата выпуска:</strong> <span id="release_date" data-bind="text: release_date"></span></p>
+                <p><strong>Длительность:</strong> <span id="runtime" data-bind="text: runtime"></span></p>
+                <p><strong>Статус:</strong> <span id="status" data-bind="text: status"></span></p>
+                <p><strong>Оценка:</strong> <span id="vote_average" data-bind="text: vote_average"></span></p>
+                <p><strong>Количество голосов:</strong> <span id="vote_count" data-bind="text: vote_count"></span></p>
+                <div class="buttons">
+                    <button data-bind="click: function() { addInFavorite() }">Добавить в избранное</button>
+                    <button data-bind="click: function() { removeFromFavorite() }">Удалить из избранного</button>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
     </div>
-    <!-- /ko -->
     
     <script>
         var self = this;
@@ -59,6 +60,24 @@
 
         self.project = {
             film: ko.observableArray([]),
+        }
+
+        function addInFavorite() {
+            $.ajax({
+                url: 'http://217.71.129.139:4529/api/v1/addToFavorite',
+                type: 'get',
+                dataType: 'json',
+                data: { 'id': self.project.film().id }
+            })
+        }
+
+        function removeFromFavorite() {
+            $.ajax({
+                url: 'http://217.71.129.139:4529/api/v1/deleteFromFavorite',
+                type: 'get',
+                dataType: 'json',
+                data: { 'id': self.project.film().id }
+            })
         }
 
         $.ajax({
